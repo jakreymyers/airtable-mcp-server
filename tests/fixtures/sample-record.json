@@ -1,0 +1,33 @@
+{
+  "validRequest": {
+    "recordId": "recGgl5DHRYLssH7Z",
+    "baseId": "appIqZltrzTQYLWhW",
+    "tableName": "tbllXxQcFRUcpmzbr"
+  },
+  "invalidRequests": {
+    "invalidRecordId": {
+      "recordId": "invalidID",
+      "baseId": "appIqZltrzTQYLWhW",
+      "tableName": "tbllXxQcFRUcpmzbr"
+    },
+    "invalidBaseId": {
+      "recordId": "recGgl5DHRYLssH7Z",
+      "baseId": "invalidBase",
+      "tableName": "tbllXxQcFRUcpmzbr"
+    },
+    "missingTableName": {
+      "recordId": "recGgl5DHRYLssH7Z",
+      "baseId": "appIqZltrzTQYLWhW"
+    }
+  },
+  "expectedResponse": {
+    "id": "recGgl5DHRYLssH7Z",
+    "fields": {
+      "Task ID": 1209766018267410,
+      "Task Name": "[Meetings] Setup Crons for individual meetings to automate sanity updates and algolia indices",
+      "Task Status": "In Progress",
+      "Assignee": "Mat Miehle"
+    },
+    "createdTime": null
+  }
+}

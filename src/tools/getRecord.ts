@@ -1,8 +1,9 @@
 import { z } from "zod";
 import Airtable from "airtable";
-import { AirtableConfig } from "../config.js";
+import { AirtableConfig } from "../config/index.js";
 import { handleAirtableError } from "../utils/error.js";
 import { validateRecordId, validateBaseId } from "../utils/validation.js";
+import type { MCPTool } from "../types/index.js";
 
 export const getRecordSchema = z.object({
   recordId: z.string()
@@ -67,7 +68,7 @@ export const getRecordHandler = async (request: any) => {
   }
 };
 
-export const getRecordTool = {
+export const getRecordTool: MCPTool = {
   schema: {
     type: "object",
     properties: {

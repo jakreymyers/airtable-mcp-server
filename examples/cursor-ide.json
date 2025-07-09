@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "airtable": {
+      "command": "node",
+      "args": ["./dist/index.js"],
+      "env": {
+        "AIRTABLE_PERSONAL_ACCESS_TOKEN": "your_token_here"
+      }
+    }
+  }
+}

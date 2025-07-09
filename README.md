@@ -75,7 +75,7 @@ The server provides one tool: `getAirtableRecord`
 
 ### Claude Desktop
 
-Add to your `~/.claude/mcp.json`:
+Add to your `~/.claude/mcp.json` (see `examples/claude-desktop.json`):
 
 ```json
 {
@@ -93,7 +93,7 @@ Add to your `~/.claude/mcp.json`:
 
 ### Cursor IDE
 
-Add to your `.cursor/mcp.json`:
+Add to your `.cursor/mcp.json` (see `examples/cursor-ide.json`):
 
 ```json
 {
@@ -104,6 +104,25 @@ Add to your `.cursor/mcp.json`:
       "env": {
         "AIRTABLE_PERSONAL_ACCESS_TOKEN": "your_token_here"
       }
+    }
+  }
+}
+```
+
+### VS Code
+
+Add to your MCP configuration (see `examples/vscode.json`):
+
+```json
+{
+  "mcpServers": {
+    "airtable": {
+      "command": "node",
+      "args": ["./dist/index.js"],
+      "env": {
+        "AIRTABLE_PERSONAL_ACCESS_TOKEN": "your_token_here"
+      },
+      "transport": "stdio"
     }
   }
 }
@@ -131,7 +150,9 @@ npm install -g airtable-mcp-server
 | `npm run build` | Compile TypeScript to JavaScript |
 | `npm start` | Run compiled server |
 | `npm run clean` | Remove build artifacts |
-| `npm test` | Run tests (when implemented) |
+| `npm test` | Run unit tests |
+| `npm run test:integration` | Run integration tests |
+| `npm run test:all` | Run all tests |
 
 ### Project Structure
 
@@ -139,15 +160,33 @@ npm install -g airtable-mcp-server
 airtable-mcp-server/
 ├── src/
 │   ├── index.ts              # Server entry point
-│   ├── config.ts             # Configuration management
+│   ├── config/
+│   │   ├── index.ts          # Configuration management
+│   │   └── validation.ts     # Config validation
 │   ├── tools/
+│   │   ├── index.ts          # Tool registry
 │   │   └── getRecord.ts      # Record retrieval tool
 │   ├── types/
-│   │   └── airtable.ts       # Type definitions
+│   │   └── index.ts          # Type definitions
 │   └── utils/
 │       ├── error.ts          # Error handling
 │       └── validation.ts     # Input validation
+├── tests/
+│   ├── integration.test.ts   # Integration tests
+│   ├── unit/
+│   │   └── tools.test.ts     # Unit tests
+│   └── fixtures/
+│       └── sample-record.json # Test data
+├── examples/
+│   ├── claude-desktop.json   # Claude Desktop config
+│   ├── cursor-ide.json       # Cursor IDE config
+│   ├── vscode.json           # VS Code config
+│   └── usage.md              # Usage examples
+├── docs/
+│   └── DEPLOYMENT.md         # Deployment guide
 ├── dist/                     # Compiled JavaScript (generated)
+├── PRD.md                    # Product requirements
+├── CLAUDE.md                 # Claude Code guidance
 ├── package.json
 ├── tsconfig.json
 ├── .env.example
